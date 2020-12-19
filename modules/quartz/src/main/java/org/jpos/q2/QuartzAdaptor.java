@@ -85,6 +85,8 @@ public class QuartzAdaptor extends QBeanSupport implements XmlConfigurable {
         Logger.log(evt);
     }
     protected void startService() throws SchedulerException {
+        scheduler.getListenerManager()
+                 .addTriggerListener(this);
         scheduler.start();
     }
     protected void stopService() throws SchedulerException {
